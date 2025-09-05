@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,16 +67,11 @@ dependencies {
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.8.0")
 
-    // Google Maps Compose
-    implementation("com.google.maps.android:maps-compose:4.4.1")
-    implementation("com.google.android.gms:play-services-maps:19.0.0")
-
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
     implementation("androidx.compose.material3:material3:1.2.1")
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
-    // Google Maps (Compose)
-    implementation("com.google.maps.android:maps-compose:4.4.1")
-    implementation("com.google.android.gms:play-services-maps:19.0.0")
     // Retrofit + Gson (ya lo usas en adapters-http, pero aquí por si lo necesitas directo)
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")

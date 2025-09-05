@@ -7,5 +7,6 @@ data class LocationDto(
     val lng: Double,
     val speedKmh: Double?,
     val bearing: Float?,
-    val timestamp: Long
+    val timestamp: Long,
+    val busId: String
 )

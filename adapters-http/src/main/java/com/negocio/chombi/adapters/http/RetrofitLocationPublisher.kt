@@ -5,12 +5,16 @@ import com.negocio.chombi.core.ports.out.LocationPublisher
 
 class RetrofitLocationPublisher(private val api: ApiService) : LocationPublisher {
     override suspend fun publish(s: LocationSample) {
-        api.sendLocation(
-            LocationDto(
-                s.driverId.value, s.lineId.value,
-                s.point.lat, s.point.lng,
-                s.speedKmh, s.bearing, s.timestampMillis
-            )
+        val dto = LocationDto(
+            driverId = s.driverId.value,
+            lineId   = s.lineId.value,
+            lat      = s.point.lat,
+            lng      = s.point.lng,
+            speedKmh = s.speedKmh,
+            bearing  = s.bearing,
+            timestamp= s.timestampMillis,
+            busId    = s.busId.value
         )
+        api.sendLocation(dto)
     }
 }
