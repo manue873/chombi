@@ -1,15 +1,11 @@
-// :app/src/main/java/com/negocio/chombi/tracking/ServiceNotifier.kt
 package com.negocio.chombi.tracking
 
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.negocio.chombi.MainActivity
 import com.negocio.chombi.R
 
 class ServiceNotifier(private val ctx: Context) {
@@ -18,22 +14,23 @@ class ServiceNotifier(private val ctx: Context) {
 
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val ch = NotificationChannel(channelId, "Tracking", NotificationManager.IMPORTANCE_LOW)
-            ctx.getSystemService(NotificationManager::class.java).createNotificationChannel(ch)
+            val ch = NotificationChannel(
+                channelId,
+                "Tracking en segundo plano",
+                NotificationManager.IMPORTANCE_LOW
+            ).apply { description = "Envío de ubicación en tiempo real" }
+            (ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
+                .createNotificationChannel(ch)
         }
     }
 
-    fun build(text: String): Notification {
-        val pending = PendingIntent.getActivity(
-            ctx, 0, Intent(ctx, MainActivity::class.java),
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        )
+    fun build(content: String): Notification {
+        // (Opcional) builder simple si no quieres acciones extras
         return NotificationCompat.Builder(ctx, channelId)
-            .setSmallIcon(android.R.drawable.ic_menu_mylocation) // o android.R.drawable.ic_menu_mylocation
             .setContentTitle("Chombi")
-            .setContentText(text)
+            .setContentText(content)
+            .setSmallIcon(android.R.drawable.ic_menu_mapmode)
             .setOngoing(true)
-            .setContentIntent(pending)
             .build()
     }
 }

@@ -1,5 +1,7 @@
 package com.negocio.chombi.adapters.http
 
+import com.google.gson.annotations.SerializedName
+
 data class LocationReadDto(
     val id: Int,
     val driverId: String,
@@ -8,5 +10,7 @@ data class LocationReadDto(
     val lng: Double,
     val speedKmh: Double?,
     val bearing: Float?,
-    val timestamp: Long
+    @SerializedName("timestampMillis")
+    val timestamp: Long,
+    val busId: String
 )

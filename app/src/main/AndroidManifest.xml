@@ -22,7 +22,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         >
         <service
-            android:name=".tracking.TrackingService"
+            android:name=".tracking.LocationForegroundService"
             android:exported="false"
             android:foregroundServiceType="location" />
         <meta-data

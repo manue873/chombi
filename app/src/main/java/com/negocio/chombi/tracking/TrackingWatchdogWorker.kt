@@ -3,6 +3,7 @@ package com.negocio.chombi.tracking
 
 import android.content.Context
 import androidx.work.*
+import com.negocio.chombi.prefts.AppPrefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
@@ -13,7 +14,7 @@ class TrackingWatchdogWorker(appContext: Context, params: WorkerParameters)
     override suspend fun doWork(): Result = withContext(Dispatchers.Default) {
         val active = AppPrefs(applicationContext).isDriverActive()
         if (active && !isServiceRunning(applicationContext, LocationForegroundService::class.java)) {
-            TrackingService.start(applicationContext)
+            ForegroundTrackingController.start(applicationContext)
         }
         Result.success()
     }

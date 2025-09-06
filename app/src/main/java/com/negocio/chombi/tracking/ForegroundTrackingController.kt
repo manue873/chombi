@@ -3,8 +3,9 @@ package com.negocio.chombi.tracking
 
 import android.content.Context
 import android.os.Build
+import com.negocio.chombi.prefts.AppPrefs
 
-object TrackingService {
+object ForegroundTrackingController {
 
     fun start(ctx: Context) {
         // marca estado

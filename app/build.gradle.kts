@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.play.services.location)
+    implementation(libs.androidx.appcompat.resources)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -64,6 +65,15 @@ dependencies {
     implementation(project(":adapters-location"))
     implementation(project(":adapters-http"))
 
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.2")
+    implementation(platform("com.squareup.retrofit2:retrofit-bom:3.0.0"))
+
+    implementation("com.squareup.retrofit2:retrofit")
+    implementation("com.squareup.retrofit2:converter-moshi")
+
+    //data lines
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.8.0")
 
@@ -77,4 +87,5 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("androidx.compose.material:material-icons-extended")
 }

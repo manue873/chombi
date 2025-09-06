@@ -10,7 +10,7 @@
 
     <!-- Dominios explícitos usados en local -->
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">https://99029a63e8a5.ngrok-free.app</domain>
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">127.0.0.1</domain>
     </domain-config>
